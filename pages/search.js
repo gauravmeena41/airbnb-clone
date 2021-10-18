@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useRouter } from "next/dist/client/router";
 import { format } from "date-fns";
+import InfoBanner from "../components/InfoBanner";
 
 const buttons = [
   "Cancellation Flexibility",
@@ -11,7 +12,18 @@ const buttons = [
   "More filters",
 ];
 
-const Search = () => {
+export const getServerSideProps = async () => {
+  const searchResults = await fetch("https://jsonkeeper.com/b/5NPS").then(
+    (res) => res.json()
+  );
+  return {
+    props: {
+      searchResults,
+    },
+  };
+};
+
+const Search = ({ searchResults }) => {
   const router = useRouter();
   const { location, startDate, endDate, guests } = router.query;
 
@@ -36,6 +48,18 @@ const Search = () => {
               <button key={index} className="button">
                 {buttonText}
               </button>
+            ))}
+          </div>
+          <div className="flex flex-col">
+            {searchResults.map((img, description, title, star, price) => (
+              <InfoBanner
+                key={img}
+                img={img}
+                description={description}
+                title={title}
+                start={star}
+                price={price}
+              />
             ))}
           </div>
         </section>
