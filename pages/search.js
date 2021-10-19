@@ -51,16 +51,20 @@ const Search = ({ searchResults }) => {
             ))}
           </div>
           <div className="flex flex-col">
-            {searchResults.map((img, description, title, star, price) => (
-              <InfoBanner
-                key={img}
-                img={img}
-                description={description}
-                title={title}
-                start={star}
-                price={price}
-              />
-            ))}
+            {searchResults.map(
+              ({ img, location, description, title, star, price, total }) => (
+                <InfoBanner
+                  key={img}
+                  img={img}
+                  location={location}
+                  description={description}
+                  title={title}
+                  star={star}
+                  price={price}
+                  total={total}
+                />
+              )
+            )}
           </div>
         </section>
       </main>
