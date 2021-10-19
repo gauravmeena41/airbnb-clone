@@ -7,11 +7,11 @@ import BottomBanner from "../components/BottomBanner";
 import Footer from "../components/Footer";
 
 export const getStaticProps = async () => {
-  const exploreData = await fetch("https://jsonkeeper.com/b/4G1G").then((res) =>
+  const exploreData = await fetch("https://jsonkeeper.com/b/QEUZ").then((res) =>
     res.json()
   );
 
-  const cardsData = await fetch("https://jsonkeeper.com/b/VHHT").then((res) =>
+  const cardsData = await fetch("https://jsonkeeper.com/b/W793").then((res) =>
     res.json()
   );
 
