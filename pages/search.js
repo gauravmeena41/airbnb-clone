@@ -15,7 +15,7 @@ const buttons = [
 ];
 
 export const getServerSideProps = async () => {
-  const searchResults = await fetch("https://jsonkeeper.com/b/DTVC").then(
+  const searchResults = await fetch("https://jsonkeeper.com/b/G19Y").then(
     (res) => res.json()
   );
   return {

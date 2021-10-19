@@ -1,6 +1,7 @@
 import { getCenter } from "geolib";
 import { useState } from "react";
 import ReactMapGl, { Marker, Popup } from "react-map-gl";
+import Image from "next/image";
 
 const Map = ({ searchResults }) => {
   const [selectedLocation, setSelectedLocation] = useState({});
@@ -46,13 +47,22 @@ const Map = ({ searchResults }) => {
           </Marker>
           {selectedLocation.long === result.long ? (
             <Popup
-              className="z-50"
               onClick={() => setSelectedLocation({})}
               closeOnClick={true}
               latitude={result.lat}
               longitude={result.long}
             >
-              {result.title}
+              <div className="relative w-[200px] h-[200px]">
+                <Image
+                  src={result.img}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg"
+                />
+              </div>
+              <p className="z-50 w-[200px] text-center font-semibold ">
+                {result.title}
+              </p>
             </Popup>
           ) : (
             false
