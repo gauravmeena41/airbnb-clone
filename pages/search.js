@@ -1,8 +1,10 @@
+import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useRouter } from "next/dist/client/router";
 import { format } from "date-fns";
 import InfoBanner from "../components/InfoBanner";
+import Map from "../components/Map";
 
 const buttons = [
   "Cancellation Flexibility",
@@ -32,44 +34,54 @@ const Search = ({ searchResults }) => {
   const range = `${formatedStartDate} - ${formatedEndDate}`;
 
   return (
-    <div className="h-screen">
-      <Header placeholder={`${location} | ${range} | ${guests}`} />
+    <>
+      <Head>
+        <title>Airbnb | {location}</title>
+        <link rel="icon" href="/images/airbnb.png" />
+      </Head>
 
-      <main className="flex">
-        <section className="flex-grow pt-14 px-6">
-          <p className="text-xs">
-            300+ Stays - {range} - for {guests} guests
-          </p>
-          <h1 className="text-3xl font-semibold mt-2 mb-6">
-            Stays in {location}
-          </h1>
-          <div className="hidden md:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
-            {buttons.map((buttonText, index) => (
-              <button key={index} className="button">
-                {buttonText}
-              </button>
-            ))}
-          </div>
-          <div className="flex flex-col">
-            {searchResults.map(
-              ({ img, location, description, title, star, price, total }) => (
-                <InfoBanner
-                  key={img}
-                  img={img}
-                  location={location}
-                  description={description}
-                  title={title}
-                  star={star}
-                  price={price}
-                  total={total}
-                />
-              )
-            )}
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+      <div className="h-screen">
+        <Header placeholder={`${location} | ${range} | ${guests}`} />
+
+        <main className="flex">
+          <section className="flex-grow pt-14 px-6">
+            <p className="text-xs">
+              300+ Stays - {range} - for {guests} guests
+            </p>
+            <h1 className="text-3xl font-semibold mt-2 mb-6">
+              Stays in {location}
+            </h1>
+            <div className="hidden md:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
+              {buttons.map((buttonText, index) => (
+                <button key={index} className="button">
+                  {buttonText}
+                </button>
+              ))}
+            </div>
+            <div className="flex flex-col">
+              {searchResults.map(
+                ({ img, location, description, title, star, price, total }) => (
+                  <InfoBanner
+                    key={img}
+                    img={img}
+                    location={location}
+                    description={description}
+                    title={title}
+                    star={star}
+                    price={price}
+                    total={total}
+                  />
+                )
+              )}
+            </div>
+          </section>
+          <section className="hidden md:inline-flex min-w-[600px]">
+            <Map searchResults={searchResults} />
+          </section>
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 };
 
