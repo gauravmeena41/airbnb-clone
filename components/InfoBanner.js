@@ -29,7 +29,7 @@ const InfoBanner = ({
           <HeartIcon
             className="h-7 cursor-pointer text-gray-400"
             style={{ color: liked && "red" }}
-            onClick={() => setLiked(true)}
+            onClick={() => setLiked(!liked)}
           />
         </div>
         <h4 className="text-xl">{title}</h4>
