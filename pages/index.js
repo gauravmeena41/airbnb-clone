@@ -5,6 +5,8 @@ import SmallCard from "../components/SmallCard";
 import MediumCard from "../components/MediumCard";
 import BottomBanner from "../components/BottomBanner";
 import Footer from "../components/Footer";
+import Image from "next/image";
+import { useState } from "react";
 
 export const getStaticProps = async () => {
   const exploreData = await fetch("https://jsonkeeper.com/b/QEUZ").then((res) =>
@@ -24,12 +26,22 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ exploreData, cardsData }) {
+  const [hidden, setHidden] = useState("");
   return (
-    <div>
+    <div onLoad={() => setHidden("hidden")}>
       <Head>
         <title>Airbnb</title>
         <link rel="icon" href="/images/airbnb.png" />
       </Head>
+
+      <div className={`w-[100%] h-[100vh] fixed bg-white z-50 ${hidden}`}>
+        <div className="flex items-center justify-center h-full">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/2560px-Airbnb_Logo_B%C3%A9lo.svg.png"
+            className="w-[25%] animate-pulse "
+          />
+        </div>
+      </div>
 
       <Header />
       <TopBanner />

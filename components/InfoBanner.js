@@ -1,6 +1,7 @@
-import { HeartIcon } from "@heroicons/react/outline";
+import { HeartIcon } from "@heroicons/react/solid";
 import { StarIcon } from "@heroicons/react/solid";
 import Image from "next/image";
+import { useState } from "react";
 
 const InfoBanner = ({
   img,
@@ -11,6 +12,7 @@ const InfoBanner = ({
   price,
   total,
 }) => {
+  const [liked, setLiked] = useState(false);
   return (
     <div className="info-card-main">
       <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0 ">
@@ -24,7 +26,11 @@ const InfoBanner = ({
       <div className="flex flex-col flex-grow pl-5">
         <div className="flex justify-between">
           <p>{location}</p>
-          <HeartIcon className="h-7 cursor-pointer" />
+          <HeartIcon
+            className="h-7 cursor-pointer text-gray-400"
+            style={{ color: liked && "red" }}
+            onClick={() => setLiked(true)}
+          />
         </div>
         <h4 className="text-xl">{title}</h4>
         <div className="border-b w-10 pt-2" />
@@ -35,8 +41,10 @@ const InfoBanner = ({
             {star}
           </p>
           <div>
-            <p className="text-lg lg:text-2xl font-semibold pb-2">{price}</p>
-            <p className="text-right font-extralight">{total}</p>
+            <p className="text-lg lg:text-2xl mb-2 font-semibold  text-white bg-red-400 px-5 py-2 rounded-full ">
+              {price}
+            </p>
+            <p className=" text-right text-gray-500 ">{total}</p>
           </div>
         </div>
       </div>

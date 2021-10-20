@@ -15,7 +15,7 @@ const buttons = [
 ];
 
 export const getServerSideProps = async () => {
-  const searchResults = await fetch("https://jsonkeeper.com/b/G19Y").then(
+  const searchResults = await fetch("https://jsonkeeper.com/b/Q16P").then(
     (res) => res.json()
   );
   return {
@@ -45,10 +45,17 @@ const Search = ({ searchResults }) => {
 
         <main className="flex">
           <section className="flex-grow pt-14 px-6">
-            <p className="text-xs">
-              300+ Stays - {range} - for {guests} guests
+            <p className="text-xs font-medium">
+              300+ Stays -{" "}
+              <span className="bg-red-400 text-white py-2 px-3 mx-2 rounded-full  cursor-pointer hover:shadow-xl transition duration-300">
+                {range}
+              </span>{" "}
+              - for
+              <span className="bg-red-400 text-white py-2 px-3 mx-2 rounded-full  cursor-pointer hover:shadow-xl transition duration-300">
+                {guests} guests
+              </span>
             </p>
-            <h1 className="text-3xl font-semibold mt-2 mb-6">
+            <h1 className="text-3xl font-semibold mt-5 mb-6">
               Stays in {location}
             </h1>
             <div className="hidden md:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">

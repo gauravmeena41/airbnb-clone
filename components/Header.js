@@ -44,7 +44,7 @@ const Header = ({ placeholder }) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
+    <header className="sticky top-0 z-40 grid grid-cols-3 bg-white shadow-md p-5 md:px-10 ">
       <div
         onClick={() => {
           router.push("/");
@@ -109,12 +109,15 @@ const Header = ({ placeholder }) => {
           </div>
           <div className="flex">
             <button
-              className="flex-grow text-gray-500"
+              className="flex-grow text-gray-500 font-semibold py-3 md:mx-20  rounded-full transition duration-300 shadow-md hover:shadow-xl"
               onClick={() => setSearchInput("")}
             >
               Cancel
             </button>
-            <button onClick={search} className="flex-grow text-red-400">
+            <button
+              onClick={search}
+              className="flex-grow text-white bg-red-400 rounded-full py-3 md:mx-20 font-semibold transition duration-300 shadow-md hover:shadow-xl"
+            >
               Search
             </button>
           </div>
