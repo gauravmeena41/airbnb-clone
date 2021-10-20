@@ -19,3 +19,8 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+.mapboxgl-popup-content {
+  padding: 0 !important;
+  border-radius: 10px !important;
+  background-color: #2e2e2e !important;
+}

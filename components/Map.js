@@ -52,7 +52,7 @@ const Map = ({ searchResults }) => {
               latitude={result.lat}
               longitude={result.long}
             >
-              <div className="relative w-[200px] h-[200px]">
+              <div className="relative w-[350px] h-[200px]">
                 <Image
                   src={result.img}
                   layout="fill"
@@ -60,7 +60,7 @@ const Map = ({ searchResults }) => {
                   className="rounded-lg"
                 />
               </div>
-              <p className="z-50 w-[200px] text-center font-semibold ">
+              <p className="z-50 w-[350px] text-center text-white font-semibold ">
                 {result.title}
               </p>
             </Popup>
